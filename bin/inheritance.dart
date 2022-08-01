@@ -1,13 +1,18 @@
-abstract class Animal {
-  void sayHello();
-}
-
-class Human implements Animal {
-  @override
+mixin Animal1 {
+  int age = 0;
   void sayHello() {
-    print('Hello Human');
+    print('Mixin1 Hello');
   }
 }
+
+mixin Animal2 {
+  int age = 2;
+  void sayHello() {
+    print('Mixin2 Hello');
+  }
+}
+
+class Human with Animal1, Animal2 {}
 
 // class Human extends Animal {
 //   void sayName() {
