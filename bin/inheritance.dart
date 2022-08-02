@@ -1,35 +1,19 @@
-mixin Animal1 {
-  int age = 0;
-  void sayHello() {
-    print('Mixin1 Hello');
+class InvalidPhoneNumberException implements Exception {}
+
+bool? validatePhoneNumber(String phone) {
+  if (phone.length == 10) {
+    return true;
+  } else {
+    throw InvalidPhoneNumberException();
   }
 }
-
-mixin Animal2 {
-  int age = 2;
-  void sayHello() {
-    print('Mixin2 Hello');
-  }
-}
-
-class Human with Animal1, Animal2 {}
-
-// class Human extends Animal {
-//   void sayName() {
-//     print('Human Say Name');
-//   }
-
-//   @override
-//   void sayHello() {
-//     print('Say Hello Human');
-//     super.sayHello();
-//   }
-// }
 
 void main(List<String> arguments) {
-  // *obj human
-
-  final human = Human();
-  human.sayHello();
-  // human.sayName();
+  try {
+    final phoneValid = validatePhoneNumber('653');
+  } on InvalidPhoneNumberException catch (_) {
+    print('Invalid phone number');
+  } catch (e) {
+    print(e);
+  }
 }
